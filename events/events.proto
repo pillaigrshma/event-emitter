@@ -1,0 +1,24 @@
+
+syntax = "proto3";
+
+option go_package = "event-emitter/events";
+
+package events;
+
+
+
+service Events {
+    rpc deliverMPTEvent (stream MPTEventRequest) returns (stream MPTEventResponse) {
+    }
+}
+
+message MPTEventResponse {
+    string transactionId = 1;
+    string message = 2;
+    string status = 3;
+}
+
+message MPTEventRequest {
+    string clientId = 1;
+    string eventType = 2;
+}
